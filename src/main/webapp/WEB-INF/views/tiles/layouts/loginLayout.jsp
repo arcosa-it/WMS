@@ -12,6 +12,7 @@
 <html>
 <head>
     <title>Login</title>
+    <meta content="charset=UTF-8" />
     <%@include file="estilos.jsp"%>
     <style type="text/css">
         body {
