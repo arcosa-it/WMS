@@ -15,7 +15,7 @@
                 Inicia Sesi&oacute;n con tu usuario
             </div>
         </h2>
-        <form action="" class="ui large form">
+        <form action="<c:url value="//home"/> " class="ui large form">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
@@ -29,7 +29,7 @@
                         <input type="password" placeholder="contraseña" id="password">
                     </div>
                 </div>
-                <button class="ui fluid large blue submit button">Login</button>
+                <button class="ui fluid large blue submit button" id="ingresar">Login</button>
             </div>
         </form>
     </div>

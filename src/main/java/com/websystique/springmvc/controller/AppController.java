@@ -52,4 +52,10 @@ public class AppController {
 		return "login";
 
 	}
+
+	@RequestMapping(value = "/home",method = RequestMethod.GET)
+	public String home(Model model){
+		logger.info("Vista de Bienvenida");
+		return "home";
+	}
 }
