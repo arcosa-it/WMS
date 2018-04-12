@@ -31,11 +31,12 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/contactus.jsp" />  
    </definition>
 
-    <!-- Pagina de Login
-    <definition name="login" template="/WEB-INF/views/template/layoutLogin.jsp">
-        <put-attribute name="header" value="/WEB-INF/views/template/header.jsp" />
-        <put-attribute name="body" value="/WEB-INF/views/login.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp" />
-    </definition> -->
+    <!-- login -->
+    <definition name="login" template="/WEB-INF/views/tiles/layouts/loginLayout.jsp">
+        <put-attribute name="title" value="login" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />
+    </definition>
+
+
  
 </tiles-definitions>

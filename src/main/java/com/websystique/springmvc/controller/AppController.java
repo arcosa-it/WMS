@@ -17,10 +17,10 @@ public class AppController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(AppController.class);
 
-	@RequestMapping(value = { "/"}, method = RequestMethod.GET)
+	/*@RequestMapping(value = { "/"}, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
 		return "home";
-	}
+	}*/
 
 	@RequestMapping(value = { "/products"}, method = RequestMethod.GET)
 	public String productsPage(ModelMap model) {
@@ -32,9 +32,24 @@ public class AppController {
 		return "contactus";
 	}
 
-	@RequestMapping(value = "/login",method = RequestMethod.GET)
-	public String Login(Model model){
-		logger.info("Vista Login");
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+	public String login(Model model) {
+
 		return "login";
+
+	}
+
+	@RequestMapping(value="/", method = RequestMethod.GET)
+	public String inicio(Model model) {
+
+		return "login";
+
+	}
+
+	@RequestMapping(value="/loginError", method = RequestMethod.GET)
+	public String loginError(Model model) {
+		model.addAttribute("error", "true");
+		return "login";
+
 	}
 }
