@@ -88,11 +88,6 @@
 		    <version>1.2</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>1.0.1.Final</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>2.0.6.RELEASE</version>
@@ -102,6 +97,30 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.2.0.Final</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>3.2.8.RELEASE</version>
+		</dependency>
+        <!-- https://mvnrepository.com/artifact/com.atomikos/transactions -->
+        <dependency>
+            <groupId>com.atomikos</groupId>
+            <artifactId>transactions</artifactId>
+            <version>4.0.6</version>
+        </dependency>
+		<!-- https://mvnrepository.com/artifact/com.atomikos/transactions-jta -->
+		<dependency>
+			<groupId>com.atomikos</groupId>
+			<artifactId>transactions-jta</artifactId>
+			<version>3.7.0</version>
+		</dependency>
+
 
 	</dependencies>
 
