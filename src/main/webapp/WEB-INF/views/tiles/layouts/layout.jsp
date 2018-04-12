@@ -9,12 +9,16 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+
+
 <html>
 <head>
     <title>WMS</title>
     <meta content="charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%@include file="estilos.jsp"%>
+    <%@include file="scriptGrl.jsp"%>
+
 </head>
 <body>
     <tiles:insertAttribute name="menu" />

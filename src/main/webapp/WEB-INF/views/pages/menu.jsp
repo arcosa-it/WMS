@@ -7,18 +7,24 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="ui blue stackable inverted menu" id="mimenu">
-    <a href="" class="item header"><i class="home icon"></i>Home</a>
-    <a href="" class="item"><i class="dolly icon"></i>Ingresos</a>
+<div class="ui secondary pointing menu" id="mimenu">
+    <div class="item">
+        <img src="<c:url value='/static/img/logo-arcosa.png' />">
+    </div>
+    <a href="" class="item active"><i class="home icon"></i>Home</a>
+    <div class="ui dropdown item">
+        <i class="dropdown icon"></i><i class="dolly icon"></i>Ingresos
+        <div class="menu">
+            <a class="item">Electronics</a>
+            <a class="item">Automotive</a>
+            <a class="item">Home</a>
+        </div>
+    </div>
     <a href="" class="item"><i class="boxes icon"></i>Surtidos</a>
     <a href="" class="item"><i class="pallet icon"></i>Ubicaciones</a>
     <div class="right menu">
-        <div class="item">
-            <div class="ui transparent inverted icon input">
-                <i class="search icon"></i>
-                <input type="text" placeholder="Search">
-            </div>
-        </div>
         <a href="" class="item"><i class="lock icon"></i>Salir</a>
     </div>
 </div>
+
+
