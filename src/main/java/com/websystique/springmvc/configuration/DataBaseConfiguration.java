@@ -1,149 +1,203 @@
 package com.websystique.springmvc.configuration;
 
-import org.hibernate.ejb.HibernatePersistence;
+
+
+import org.apache.commons.dbcp.BasicDataSource;
+import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.orm.jpa.JpaDialect;
 import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.jta.JtaTransactionManager;
 
-import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.SharedCacheMode;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-import static org.apache.log4j.MDC.put;
-
 @Configuration
 @EnableTransactionManagement
-@PropertySource(value = "classpath:jdbc.properties")
+@PropertySource("classpath:jdbc.properties")
 public class DataBaseConfiguration {
-    @Value("${MySQL.connection.driver_class}")
+    @Value("${jdbc.driverClassName}")
 
     private String driverClassName;
 
-    @Value("${MySQL.connection.url}")
+    @Value("${jdbc.url}")
 
     private String url;
 
-    @Value("${MySQL.connection.username}")
+    @Value("${jdbc.username}")
 
     private String username;
 
-    @Value("${MySQL.connection.password}")
+    @Value("${jdbc.password}")
 
     private String password;
 
-    @Value("${MySQL.minPoolSize}")
+/*    @Value("${MySQL.minPoolSize}")
 
     private int maxIdle;
 
     @Value("${MySQL.maxPoolSize}")
 
     private int maxActive;
+*/
 
-    @Value("${MySQL.dialect}")
+    @Value("${hibernate.dialect}")
 
     private String dialect;
 
-    @Value("${MySQL.show_sql}")
+    @Value("${jpa.showSql}")
 
-    private boolean showSql;
+    private String showSql;
 
-    @Value("${MySQL.generateDdl}")
+    @Value("${jpa.generateDdl}")
 
-    private boolean generateDdl;
+    private String generateDdl;
+
 
     @Bean
-
-    public PropertyPlaceholderConfigurer getPropertyPlaceholderConfigurer() {
-
-        PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
-
-        ppc.setLocation(new ClassPathResource("jdbc.properties"));
-
-        ppc.setIgnoreUnresolvablePlaceholders(true);
-
-        return ppc;
-
+    public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
+        return new PropertySourcesPlaceholderConfigurer();
     }
 
-    @Bean
 
-    public javax.sql.DataSource dataSource() {
-
-        org.apache.commons.dbcp.BasicDataSource mysqlDs = new org.apache.commons.dbcp.BasicDataSource();
-
+    public DataSource getDataSource() {
+        BasicDataSource dataSource = new BasicDataSource();
         try {
-
-            mysqlDs.setDriverClassName(driverClassName);
-
-            mysqlDs.setUsername(username);
-
-            mysqlDs.setPassword(password);
-
-            mysqlDs.setUrl(url);
-
-            mysqlDs.setMaxIdle(maxIdle);
-
-            mysqlDs.setMaxActive(maxActive);
-
-            mysqlDs.close();
-
-        } catch (java.sql.SQLException e) {
-
-// TODO Auto-generated catch block
-
+            dataSource.setDriverClassName(driverClassName);
+            dataSource.setUrl(url);
+            dataSource.setUsername(username);
+            dataSource.setPassword(password);
+        }catch (Exception e){
             e.printStackTrace();
-
         }
-
-        return mysqlDs;
-
+        return dataSource;
     }
 
-    /*@Bean
+
+    /*@Bean(name = "entityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
+        entityManagerFactory.setPersistenceProvider(new HibernatePersistenceProvider());
+        entityManagerFactory.setDataSource(getDataSource());
+        entityManagerFactory.setPersistenceUnitName("MYSQL");
+        entityManagerFactory.setJpaPropertyMap(new java.util.HashMap<String, String>() {{
+
+
+            put("hibernate.archive.autodetection", "class,hbm");
+
+            put("hibernate.connection.release_mode", "on_close");
+
+            put("hibernate.hbm2ddl.auto","create");
+        }});
+        entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter());
+        entityManagerFactory.setJpaDialect(jpaDialect());
+        return entityManagerFactory;
+    }*/
+
+    @Bean
+    public EntityManagerFactory entityManagerFactory() {
+
+        LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
+        lcemfb.setPersistenceProvider(new HibernatePersistenceProvider());
+        lcemfb.setPersistenceUnitName("persistenceUnit");
+        lcemfb.setDataSource(getDataSource());
+        lcemfb.setJpaDialect(new HibernateJpaDialect());
+        lcemfb.setJpaVendorAdapter(jpaVendorAdapter());
+        lcemfb.setSharedCacheMode(SharedCacheMode.ENABLE_SELECTIVE);
+        Properties jpaProperties = new Properties();
+        jpaProperties.put("hibernate.generate_statistics", false);
+        jpaProperties.put("hibernate.show_sql", true);
+        lcemfb.setJpaProperties(jpaProperties);
+        lcemfb.setPackagesToScan("cn.org.once.cstack.model");
+        lcemfb.afterPropertiesSet();
+        return lcemfb.getObject();
+    }
+
+    @Bean(name = "jpaVendorAdapter")
+    public JpaVendorAdapter jpaVendorAdapter() {
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+        vendorAdapter.setGenerateDdl(true);
+        vendorAdapter.setShowSql(true);
+        vendorAdapter.setDatabase(Database.MYSQL);
+        return vendorAdapter;
+    }
+
+    @Bean(name = "jpaDialect")
+    public JpaDialect jpaDialect() {
+        return new HibernateJpaDialect();
+    }
+
+    @Bean(name = "transactionManager")
+    public PlatformTransactionManager annotationDrivenTransactionManager() {
+        JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
+        jpaTransactionManager.setEntityManagerFactory(entityManagerFactory());
+        return jpaTransactionManager;
+    }
+
+
+    @Bean(name = "persistenceExceptionTranslation")
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+        return new PersistenceExceptionTranslationPostProcessor();
+    }
+
+
+   /* @Bean
 
     public LocalContainerEntityManagerFactoryBean sessionFactory() {
 
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 
-        factoryBean.setDataSource(dataSource());
+        try {
+            factoryBean.setDataSource(getDataSource());
 
-        factoryBean.setPersistenceUnitName("MySQL");
+            //factoryBean.setPersistenceUnitName("MySQL");
 
-        factoryBean.setPackagesToScan("com.websystique.springmvc.domain");
+            //factoryBean.setPackagesToScan("com.websystique.springmvc.domain");
 
-        org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter jpaVendorAdapter = new org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter();
+            factoryBean.setPackagesToScan(getClass().getPackage().getName());
 
-        jpaVendorAdapter.setShowSql(showSql);
+            HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
 
-        jpaVendorAdapter.setGenerateDdl(generateDdl);
+            jpaVendorAdapter.setShowSql(Boolean.valueOf(showSql));
 
-        jpaVendorAdapter.setDatabasePlatform(dialect);
+            jpaVendorAdapter.setGenerateDdl(Boolean.valueOf(generateDdl));
 
-        factoryBean.setJpaVendorAdapter(jpaVendorAdapter);
+            jpaVendorAdapter.setDatabasePlatform(dialect);
 
-        factoryBean.setJpaPropertyMap(	new java.util.HashMap<String, String>()	{{
+            factoryBean.setJpaVendorAdapter(jpaVendorAdapter);
 
-            put("hibernate.transaction.factory_class", "org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory");
+            factoryBean.setJpaPropertyMap(new java.util.HashMap<String, String>() {{
 
-            put("hibernate.transaction.manager_lookup_class", "com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup");
+                put("hibernate.transaction.factory_class", "org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory");
 
-            put("hibernate.connection.release_mode", "on_close");
+                put("hibernate.transaction.manager_lookup_class", "com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup");
 
-        }});
+                put("hibernate.connection.release_mode", "on_close");
+
+            }});
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
         return factoryBean;
 
-    }*/
+    }
+
 
     /*@SuppressWarnings("static-access")
 
@@ -175,5 +229,6 @@ public class DataBaseConfiguration {
 
         return transactionManager;
 
-    }*/
+    }
+    */
 }
