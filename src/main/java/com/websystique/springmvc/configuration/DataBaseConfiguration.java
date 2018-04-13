@@ -112,7 +112,7 @@ public class DataBaseConfiguration {
 
         LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
         lcemfb.setPersistenceProvider(new HibernatePersistenceProvider());
-        lcemfb.setPersistenceUnitName("persistenceUnit");
+        lcemfb.setPersistenceUnitName("MySQL");
         lcemfb.setDataSource(getDataSource());
         lcemfb.setJpaDialect(new HibernateJpaDialect());
         lcemfb.setJpaVendorAdapter(jpaVendorAdapter());
@@ -121,7 +121,7 @@ public class DataBaseConfiguration {
         jpaProperties.put("hibernate.generate_statistics", false);
         jpaProperties.put("hibernate.show_sql", true);
         lcemfb.setJpaProperties(jpaProperties);
-        lcemfb.setPackagesToScan("cn.org.once.cstack.model");
+        lcemfb.setPackagesToScan("com.websystique.springmvc.domain");
         lcemfb.afterPropertiesSet();
         return lcemfb.getObject();
     }
