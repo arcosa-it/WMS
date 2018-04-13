@@ -15,15 +15,22 @@
     <div class="ui dropdown item">
         <i class="dropdown icon"></i><i class="dolly icon"></i>Ingresos
         <div class="menu">
-            <a class="item">Electronics</a>
-            <a class="item">Automotive</a>
-            <a class="item">Home</a>
+            <div class="item">
+                <i class="dropdown icon"></i>
+                Recibo
+                <div class="menu">
+                    <a href="" class="item">Subir Documento</a>
+                    <a href="" class="item">Captura Manual</a>
+                </div>
+            </div>
+            <a class="item">Verificaciòn</a>
+            <a class="item">Escaneo</a>
         </div>
     </div>
     <a href="" class="item"><i class="boxes icon"></i>Surtidos</a>
     <a href="" class="item"><i class="pallet icon"></i>Ubicaciones</a>
     <div class="right menu">
-        <a href="" class="item"><i class="lock icon"></i>Salir</a>
+        <a href="<c:url value="/login"/> " class="item"><i class="lock icon"></i>Salir</a>
     </div>
 </div>
 

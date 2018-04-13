@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="./static/css/login-estilos.css"/>
+<link rel="stylesheet" href="<c:url value="/static/css/login-estilos.css"/> "/>
 <%--
   Created by IntelliJ IDEA.
   User: RICHARD
@@ -17,7 +17,7 @@
                 WMS | <span>ARCOSA</span>
             </div>
         </h2>
-        <form action="<c:url value="//home"/> " class="ui large form">
+        <form action="<c:url value="/home"/> " class="ui large form">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">

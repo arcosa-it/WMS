@@ -17,7 +17,7 @@
     <meta content="charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%@include file="estilos.jsp"%>
-    <%@include file="scriptGrl.jsp"%>
+
 
 </head>
 <body>
@@ -26,5 +26,6 @@
         <tiles:insertAttribute name="body" />
     </div>
     <tiles:insertAttribute name="footer" />
+    <%@include file="scriptGrl.jsp"%>
 </body>
 </html>
