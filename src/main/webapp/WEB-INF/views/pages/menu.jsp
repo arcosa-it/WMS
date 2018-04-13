@@ -19,7 +19,7 @@
                 <i class="dropdown icon"></i>
                 Recibo
                 <div class="menu">
-                    <a href="" class="item">Subir Documento</a>
+                    <a href="<c:url value="/subirDocumento"/> " class="item">Subir Documento</a>
                     <a href="" class="item">Captura Manual</a>
                 </div>
             </div>
