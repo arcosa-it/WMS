@@ -4,10 +4,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.websystique.springmvc</groupId>
-	<artifactId>Juquila</artifactId>
+	<artifactId>wms</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0</version>
-	<name>Juquila</name>
+	<name>wms</name>
 
   	<properties>
 		<springframework.version>4.2.6.RELEASE</springframework.version>
@@ -163,12 +163,12 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>Juquila</warName>
+						<warName>wms</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<finalName>Juquila</finalName>
+		<finalName>wms</finalName>
 	</build>
 </project>
