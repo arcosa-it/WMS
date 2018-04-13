@@ -53,7 +53,7 @@ public class AppController {
 
 	}
 
-	@RequestMapping(value = "/home",method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_home",method = RequestMethod.GET)
 	public String home(Model model){
 		logger.info("Vista de Bienvenida");
 		return "home";
