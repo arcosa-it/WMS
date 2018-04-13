@@ -17,6 +17,7 @@ var app = {
 app.init();
 
 
+
 $("#file").on("change",function(){
 	app.nombreInput($(this).val());
 })
