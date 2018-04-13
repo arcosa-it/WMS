@@ -18,4 +18,5 @@ app.init();
 
 $("#file").on("change",function(){
 	app.nombreInput($(this).val());
+	alert($(this).val());
 })
