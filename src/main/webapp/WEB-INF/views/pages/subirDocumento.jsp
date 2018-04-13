@@ -23,6 +23,7 @@
                         <label for="file" class="ui icon button">
                             <i class="file icon"></i>
                             Adjuntar Documento</label>
+                        <h4 class="titulo-archivo"></h4>
                         <input type="file" style="display:none" id="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
                     </div>
                     <div class="column">

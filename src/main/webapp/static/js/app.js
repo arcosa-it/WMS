@@ -6,7 +6,8 @@ var app = {
 	},
     nombreInput: function(input){
         nombre = input.substring(input.lastIndexOf("\\") + 1, input.length);
-        console.log(nombre);
+		$(".titulo-archivo").html(nombre);
+
     },
 	init:function(){
 		this.menu();
@@ -18,5 +19,4 @@ app.init();
 
 $("#file").on("change",function(){
 	app.nombreInput($(this).val());
-	alert($(this).val());
 })
