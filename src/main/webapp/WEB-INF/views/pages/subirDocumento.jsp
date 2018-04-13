@@ -22,8 +22,8 @@
                     <div class="column">
                         <label for="file" class="ui icon button">
                             <i class="file icon"></i>
-                            Abrir Documento</label>
-                        <input type="file" id="file" />
+                            Adjuntar Documento</label>
+                        <input type="file" style="display:none" id="file" />
                     </div>
                     <div class="column">
 

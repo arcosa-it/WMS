@@ -4,6 +4,10 @@ var app = {
 		    on: 'hover'
 		  });
 	},
+    nombreInput: function(input){
+        nombre = input.substring(input.lastIndexOf("\\") + 1, input.length);
+        console.log(nombre);
+    },
 	init:function(){
 		this.menu();
 	}
@@ -11,3 +15,7 @@ var app = {
 
 app.init();
 
+
+$("#file").on("change",function(){
+	app.nombreInput($(this).val());
+})
