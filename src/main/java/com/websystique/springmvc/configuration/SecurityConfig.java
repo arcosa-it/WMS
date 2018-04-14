@@ -12,9 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("richard").password("123456").roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("dba").password("123456").roles("DBA");
+        auth.inMemoryAuthentication().withUser("richard").password("123456").roles("USER").and().
+                                      withUser("admin").password("123456").roles("ADMIN").and().
+                                      withUser("dba").password("123456").roles("DBA");
     }
 
     @Override
@@ -22,13 +22,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/admin_*").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/dba_*").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_DBA')")
-                .and().formLogin().loginPage("/login").failureUrl("/login?error")
-                .usernameParameter("username").passwordParameter("password")
-                .and()
-                .logout().logoutSuccessUrl("/login?logout")
-                .and()
-                .csrf();
+                .antMatchers("/dba_*").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_DBA')").and().
+                 formLogin().loginPage("/login").failureUrl("/login?error")
+                .usernameParameter("username").passwordParameter("password").and()
+                .logout().logoutSuccessUrl("/login?logout").and().csrf();
 
     }
 }
