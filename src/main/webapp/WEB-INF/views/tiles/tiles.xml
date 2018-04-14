@@ -46,10 +46,16 @@
         <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />
     </definition>
 
-    <!-- Home Page -->
+    <!-- Subir documento -->
     <definition name="subirDocumento" extends="base">
         <put-attribute name="title" value="Subir Documento" />
         <put-attribute name="body" value="/WEB-INF/views/pages/subirDocumento.jsp" />
+    </definition>
+
+    <!-- Escaneo -->
+    <definition name="escaneo" extends="base">
+        <put-attribute name="title" value="Escanear" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/escaneo.jsp" />
     </definition>
 
 </tiles-definitions>

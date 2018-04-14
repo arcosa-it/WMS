@@ -24,7 +24,7 @@
                 </div>
             </div>
             <a class="item">Verificaciòn</a>
-            <a class="item">Escaneo</a>
+            <a href="<c:url value="/escaneo"/>" class="item">Escaneo</a>
         </div>
     </div>
     <a href="" class="item"><i class="boxes icon"></i>Surtidos</a>
