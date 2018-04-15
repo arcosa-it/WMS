@@ -1,0 +1,7 @@
+#mimenu::-webkit-scrollbar-track{
+    display: none;
+}
+#mimenu{
+    overflow-x:auto;
+    white-space: nowrap;
+}

@@ -11,7 +11,7 @@
         <h2><i class="barcode icon"></i>Escanear Ingreso</h2>
     </div>
     <div class="ui segment">
-        <div class="ui mini steps">
+        <div class="ui unstackable steps">
             <a class="active step" id="pallet">
                 <i class="truck icon"></i>
                 <div class="content">
@@ -35,11 +35,18 @@
                         Codigo de Pallet
                     </div>
                 </div>
-                <div class="sixteen wide column">
+                <!--div class="sixteen wide column">
                     <div class="ui fluid icon input">
                         <i class="inverted circular barcode link icon"></i>
                         <input type="text" id="pallet_codigo">
                     </div>
+                </div-->
+                <div class="ui left action input">
+                    <button class="ui teal labeled icon button">
+                        <i class="barcode icon"></i>
+                        Pallet tag
+                    </button>
+                    <input type="text" placeholder="Escanea el codigo del pallet...">
                 </div>
                 <div class="sixteen wide column">
                     <button class="ui blue button right floated" id="siguiente">Siguiente</button>

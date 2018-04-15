@@ -23,7 +23,7 @@
                     <a href="" class="item">Captura Manual</a>
                 </div>
             </div>
-            <a class="item">Verificaciòn</a>
+            <a class="item">Verificación</a>
             <a href="<c:url value="/escaneo"/>" class="item">Escaneo</a>
         </div>
     </div>
