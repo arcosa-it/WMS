@@ -46,7 +46,7 @@
                         <i class="barcode icon"></i>
                         Pallet tag
                     </button>
-                    <input type="text" placeholder="Escanea el codigo del pallet...">
+                    <input type="text" placeholder="Escanea el codigo del pallet..." id="pallet_codigo">
                 </div>
                 <div class="sixteen wide column">
                     <button class="ui blue button right floated" id="siguiente">Siguiente</button>
