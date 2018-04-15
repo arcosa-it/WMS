@@ -7,10 +7,9 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<title><tiles:getAsString name="title" /></title>
-	<link href="<c:url value='/static/css/bootstrap.css' />"  rel="stylesheet"></link>
-	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
-	<link rel="stylesheet" href="<:url value='/static/css/estilos-grl.css'">
+
 </head>
  
 <body>

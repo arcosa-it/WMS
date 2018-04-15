@@ -1,7 +1,28 @@
 #mimenu::-webkit-scrollbar-track{
     display: none;
 }
-#mimenu{
+.ui.secondary.pointing.menu{
     overflow-x:auto;
     white-space: nowrap;
+}
+
+.telefono{
+    display: none;
+}
+.item img{
+    margin: -6px;
+}
+.desktop{
+    display: block;
+}
+.ui.pointing.menu{
+    margin-bottom: 18px!important;
+}
+@media only screen and (max-width: 710px) {
+    div.telefono{
+        display: block;
+    }
+    div.desktop{
+        display: none;
+    }
 }

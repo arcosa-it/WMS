@@ -37,6 +37,7 @@
         <put-attribute name="title" value="WMS" />
         <put-attribute name="menu" value="/WEB-INF/views/pages/menu.jsp"/>
         <put-attribute name="body" value="" />
+        <put-attribute name="sideBar" value="/WEB-INF/views/pages/sideBar.jsp" />
         <put-attribute name="footer" value="/WEB-INF/views/pages/footer.jsp" />
     </definition>
 
@@ -57,5 +58,7 @@
         <put-attribute name="title" value="Escanear" />
         <put-attribute name="body" value="/WEB-INF/views/pages/escaneo.jsp" />
     </definition>
+
+
 
 </tiles-definitions>

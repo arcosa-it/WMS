@@ -2,7 +2,10 @@ var app = {
 	menu: function(){
 		$('.ui.dropdown').dropdown({
 		    on: 'hover'
-		  });
+		});
+	},
+	menuSide:function(){
+
 	},
     nombreInput: function(input){
         nombre = input.substring(input.lastIndexOf("\\") + 1, input.length);
@@ -34,3 +37,8 @@ $("#siguiente").click(function () {
 	app.pasosEscaneo(codigo_pallet);
 })
 $('.ui.accordion').accordion()
+
+$('.menu-tel').click(function(){
+	$(".sidebar").sidebar("toggle");
+})
+    ///.sidebar('setting', 'transition', 'push')

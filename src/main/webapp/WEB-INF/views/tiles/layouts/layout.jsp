@@ -21,10 +21,22 @@
 
 </head>
 <body>
-    <tiles:insertAttribute name="menu" />
-    <div class="ui container">
-        <tiles:insertAttribute name="body" />
-    </div>
+    <tiles:insertAttribute name="sideBar" />
+
+
+
+
+        <div class="pusher">
+            <tiles:insertAttribute name="menu" />
+            <div class="ui container">
+
+                <tiles:insertAttribute name="body" />
+            </div>
+
+         </div>
+
+
+
     <tiles:insertAttribute name="footer" />
     <%@include file="scriptGrl.jsp"%>
 </body>

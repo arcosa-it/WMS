@@ -32,7 +32,7 @@
                 <div class="one wide column"></div>
                 <div class="sixteen wide column">
                     <div class="ui label">
-                        Codigo de Pallet
+                         Escanea el codigo de los pallets
                     </div>
                 </div>
                 <!--div class="sixteen wide column">
