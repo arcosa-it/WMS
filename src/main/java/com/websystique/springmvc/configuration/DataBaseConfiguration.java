@@ -4,8 +4,10 @@ package com.websystique.springmvc.configuration;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.jpa.HibernatePersistenceProvider;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -20,6 +22,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.SharedCacheMode;
 import javax.sql.DataSource;
@@ -28,6 +31,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:jdbc.properties")
+@ComponentScan("com.websystique.springmvc")
 public class DataBaseConfiguration {
     @Value("${jdbc.driverClassName}")
 
@@ -107,7 +111,7 @@ public class DataBaseConfiguration {
         return entityManagerFactory;
     }*/
 
-    @Bean
+    @Bean(name = "MySQL")
     public EntityManagerFactory entityManagerFactory() {
 
         LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
@@ -153,6 +157,7 @@ public class DataBaseConfiguration {
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
+
 
 
    /* @Bean

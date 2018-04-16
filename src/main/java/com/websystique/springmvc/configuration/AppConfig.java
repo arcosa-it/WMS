@@ -10,7 +10,8 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.websystique.springmvc.controller")
+//@ComponentScan(basePackages = {"com.websystique.springmvc.controller","com.websystique.springmvc.repository","com.websystique.springmvc.service","com.websystique.springmvc.configuration"})
+@ComponentScan(basePackages = "com.websystique.springmvc")
 public class AppConfig extends WebMvcConfigurerAdapter{
 
 	@Override

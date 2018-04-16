@@ -35,18 +35,14 @@
                          Escanea el codigo de los pallets
                     </div>
                 </div>
-                <!--div class="sixteen wide column">
-                    <div class="ui fluid icon input">
-                        <i class="inverted circular barcode link icon"></i>
-                        <input type="text" id="pallet_codigo">
+                <div class="sixteen wide column">
+                    <div class="ui left fluid action input">
+                        <button class="ui teal labeled icon button">
+                            <i class="barcode icon"></i>
+                            Pallet tag
+                        </button>
+                        <input type="text" placeholder="Escanea el codigo del pallet..." id="pallet_codigo">
                     </div>
-                </div-->
-                <div class="ui left action input">
-                    <button class="ui teal labeled icon button">
-                        <i class="barcode icon"></i>
-                        Pallet tag
-                    </button>
-                    <input type="text" placeholder="Escanea el codigo del pallet..." id="pallet_codigo">
                 </div>
                 <div class="sixteen wide column">
                     <button class="ui blue button right floated" id="siguiente">Siguiente</button>

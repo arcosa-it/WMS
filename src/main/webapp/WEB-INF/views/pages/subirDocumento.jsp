@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: RICHARD
@@ -15,6 +16,15 @@
     <div class="ui segment">
         <form action="" class="ui form">
             <div class="grid">
+                <div class="eight wide column">
+                    <div class="field">
+                        <select name="idcliente" id="idcliente">
+                            <c:forEach items="${clientes}" var="cliente">
+                                <option value="${cliente.id_cliente}">${cliente.id_cliente} ${cliente.nom_cliente}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                </div>
                 <div class="three column row">
                     <div class="column">
                         
