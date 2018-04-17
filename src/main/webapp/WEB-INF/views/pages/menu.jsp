@@ -19,8 +19,14 @@
         <div class="ui dropdown item">
             <i class="dropdown icon"></i><i class="dolly icon"></i>Ingresos
             <div class="menu">
-
-                <a href="<c:url value="/subirDocumento"/> " class="item">Crear documento</a>
+                <div class="item">
+                    <i class="dropdown icon"></i>
+                    Crear documento
+                    <div class="menu">
+                        <a href="<c:url value="/subirDocumento"/>" class="item">Subir Documento</a>
+                        <a href="<c:url value="/capturaManual"/>" class="item">Captura Manual</a>
+                    </div>
+                </div>
                 <a class="item">Verificación</a>
                 <a href="<c:url value="/escaneo"/>" class="item">Escaneo</a>
             </div>

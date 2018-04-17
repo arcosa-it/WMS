@@ -38,26 +38,22 @@
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		</form>
 		<c:if test="${param.error != null}">
-			<div class="ui error message">
-				<div class="ui message">
+				<div class="ui negative message">
 					<i class="close icon"></i>
 					<div class="header">
 						Error!!
 					</div>
 					<p>Usuario o Contraseña Incorrectos</p>
 				</div>
-			</div>
 		</c:if>
 		<c:if test="${param.logout != null}">
-			<div class="ui error message">
-				<div class="ui message">
+				<div class="ui negative message">
 					<i class="close icon"></i>
 					<div class="header">
 						Aviso!!
 					</div>
 					<p>Has Cerrado Sesión</p>
 				</div>
-			</div>
 		</c:if>
 	</div>
 </div>
