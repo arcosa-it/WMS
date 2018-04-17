@@ -9,8 +9,9 @@
 	<version>1.0.0</version>
 	<name>wms</name>
 
-  	<properties>
-		<springframework.version>4.2.6.RELEASE</springframework.version>
+	<properties>
+		<springframework.version>4.1.6.RELEASE</springframework.version>
+		<springsecurity.version>4.0.1.RELEASE</springsecurity.version>
 		<apachetiles.version>3.0.5</apachetiles.version>
 	</properties>
 
@@ -43,18 +44,18 @@
 		</dependency>
 
 
-        <!-- Spring Security -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>3.2.3.RELEASE</version>
-        </dependency>
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${springsecurity.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>3.2.3.RELEASE</version>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${springsecurity.version}</version>
+		</dependency>
 
 		<!-- Apache Tiles -->
 		<dependency>
@@ -79,16 +80,16 @@
 		</dependency>
 
 		<dependency>
-		<groupId>org.slf4j</groupId>
-		<artifactId>slf4j-api</artifactId>
-		<version>1.6.6</version>
-	</dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.6.6</version>
+		</dependency>
 
-	<dependency>
-		<groupId>org.slf4j</groupId>
-		<artifactId>slf4j-log4j12</artifactId>
-		<version>1.6.6</version>
-	</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.6</version>
+		</dependency>
 
 		<dependency>
 			<groupId>log4j</groupId>
@@ -108,9 +109,9 @@
 			<version>2.3.1</version>
 		</dependency>
 		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>jstl</artifactId>
-		    <version>1.2</version>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
 		</dependency>
 
 		<dependency>
@@ -155,9 +156,6 @@
 			<version>3.2.8.RELEASE</version>
 		</dependency>
 
-
-
-
 	</dependencies>
 
 	<build>
@@ -178,12 +176,12 @@
 					<version>2.4</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>wms</warName>
+						<warName>wms_arcosa</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<finalName>wms</finalName>
+		<finalName>wms_arcosa</finalName>
 	</build>
 </project>

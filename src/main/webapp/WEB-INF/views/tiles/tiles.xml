@@ -11,26 +11,7 @@
        <put-attribute name="menu" value="/WEB-INF/views/tiles/template/defaultMenu.jsp" />  
        <put-attribute name="body" value="" />  
        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />  
-   </definition>  
-
-
-   <!-- Product Page -->
-   <definition name="products" extends="base-definition">  
-       <put-attribute name="title" value="Products" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/products.jsp" />  
-   </definition>  
-      
-   <!-- Contact-us Page -->
-   <definition name="contactus" extends="base-definition">
-       <put-attribute name="title" value="Contact Us" />
-       <put-attribute name="body" value="/WEB-INF/views/pages/contactus.jsp" />
    </definition>
-
-    <!-- login -->
-    <definition name="login" template="/WEB-INF/views/tiles/layouts/loginLayout.jsp">
-        <put-attribute name="title" value="login" />
-        <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />
-    </definition>
 
     <!-- Template para todas las vistas -->
     <definition name="base" template="/WEB-INF/views/tiles/layouts/layout.jsp">
@@ -41,11 +22,51 @@
         <put-attribute name="footer" value="/WEB-INF/views/pages/footer.jsp" />
     </definition>
 
-    <!-- Home Page -->
-    <definition name="home" extends="base">
-        <put-attribute name="title" value="Welcome" />
-        <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />
+   <!-- Home Page -->
+   <definition name="home" extends="base">
+       <put-attribute name="title" value="Welcome" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />  
+   </definition>  
+
+   <!-- Product Page -->
+   <definition name="products" extends="base-definition">  
+       <put-attribute name="title" value="Products" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/products.jsp" />  
+   </definition>  
+      
+   <!-- Contact-us Page -->
+   <definition name="dba" extends="base-definition">
+       <put-attribute name="title" value="Contact Us" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/contactus.jsp" />  
+   </definition>
+
+    <!-- <definition name="login" template="/WEB-INF/views/pages/login.jsp">
+        <put-attribute name="title" value="login" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />
+    </definition> -->
+
+    <definition name="login" template="/WEB-INF/views/tiles/layouts/loginLayout.jsp">
+        <put-attribute name="title" value="login" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />
     </definition>
+
+    <definition name="admin" template="/WEB-INF/views/pages/admin.jsp">
+        <put-attribute name="title" value="admin" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/admin.jsp" />
+    </definition>
+
+    <definition name="welcome" template="/WEB-INF/views/pages/welcome.jsp">
+        <put-attribute name="title" value="welcome" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/welcome.jsp" />
+    </definition>
+
+
+
+    <definition name="accessDenied" template="/WEB-INF/views/pages/accessDenied.jsp">
+        <put-attribute name="title" value="accessDenied" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/accessDenied.jsp" />
+    </definition>
+
 
     <!-- Subir documento -->
     <definition name="subirDocumento" extends="base">
@@ -58,7 +79,6 @@
         <put-attribute name="title" value="Escanear" />
         <put-attribute name="body" value="/WEB-INF/views/pages/escaneo.jsp" />
     </definition>
-
 
 
 </tiles-definitions>

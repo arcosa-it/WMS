@@ -25,7 +25,7 @@ public class IngresosController {
         return "subirDocumento";
     }
 
-    @RequestMapping(value = "escaneo",method = RequestMethod.GET)
+    @RequestMapping(value = "/escaneo",method = RequestMethod.GET)
     public  String escaneo(Model model){
         logger.info("Vista para escanear con handhel");
         return "escaneo";
