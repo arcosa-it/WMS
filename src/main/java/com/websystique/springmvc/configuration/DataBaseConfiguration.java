@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaDialect;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -159,7 +160,15 @@ public class DataBaseConfiguration {
     }
 
 
-
+    @Bean(name = "dataSource")
+    public DriverManagerDataSource dataSource() {
+        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+        driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        driverManagerDataSource.setUrl("jdbc:mysql://127.0.0.1:3306/wms?zeroDateTimeBehavior=convertToNull");
+        driverManagerDataSource.setUsername("root");
+        driverManagerDataSource.setPassword("");
+        return driverManagerDataSource;
+    }
    /* @Bean
 
     public LocalContainerEntityManagerFactoryBean sessionFactory() {

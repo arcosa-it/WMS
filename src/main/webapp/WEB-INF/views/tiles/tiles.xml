@@ -80,7 +80,7 @@
         <put-attribute name="body" value="/WEB-INF/views/pages/escaneo.jsp" />
     </definition>
 
-    <!-- Escaneo -->
+    <!-- Captura de Manual -->
     <definition name="capturaManual" extends="base">
         <put-attribute name="title" value="Captura Manual" />
         <put-attribute name="body" value="/WEB-INF/views/pages/capturaManual.jsp" />
