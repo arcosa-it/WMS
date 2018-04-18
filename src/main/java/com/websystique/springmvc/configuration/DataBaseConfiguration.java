@@ -163,10 +163,10 @@ public class DataBaseConfiguration {
     @Bean(name = "dataSource")
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-        driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        driverManagerDataSource.setUrl("jdbc:mysql://127.0.0.1:3306/wms?zeroDateTimeBehavior=convertToNull");
-        driverManagerDataSource.setUsername("root");
-        driverManagerDataSource.setPassword("");
+        driverManagerDataSource.setDriverClassName(driverClassName);
+        driverManagerDataSource.setUrl(url);
+        driverManagerDataSource.setUsername(username);
+        driverManagerDataSource.setPassword(password);
         return driverManagerDataSource;
     }
    /* @Bean
