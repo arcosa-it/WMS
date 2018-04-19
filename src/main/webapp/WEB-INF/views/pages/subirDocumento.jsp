@@ -14,7 +14,7 @@
         </h2>
     </div>
     <div class="ui segment">
-        <form action="" class="ui form">
+        <form action="" class="ui form" id="form-escaneo">
             <div class="grid">
                 <div class="eight wide column">
                     <div class="field">
@@ -33,11 +33,16 @@
                         <label for="file" class="ui icon button">
                             <i class="file icon"></i>
                             Adjuntar Documento</label>
-                        <h4 class="titulo-archivo"></h4>
-                        <input type="file" style="display:none" id="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+                        <input type="file" style="display:none" id="file" multiple="" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
                     </div>
-                    <div class="column">
-
+                </div>
+                <div class="three column row">
+                    <h4 class="titulo-archivo"></h4>
+                    <div class="ui segment" id="loader">
+                        <div class="ui active inverted dimmer">
+                            <div class="ui text loader">Cargando</div>
+                        </div>
+                        <p></p>
                     </div>
                 </div>
             </div>
