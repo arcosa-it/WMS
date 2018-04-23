@@ -84,5 +84,11 @@
         <put-attribute name="body" value="/WEB-INF/views/pages/escaneo.jsp" />
     </definition>
 
+    <!-- Captura Manual -->
+    <definition name="capturaManual" extends="base">
+        <put-attribute name="title" value="Captura Manual" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/capturaManual.jsp" />
+    </definition>
+
 
 </tiles-definitions>

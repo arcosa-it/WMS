@@ -1,7 +1,7 @@
 #mimenu::-webkit-scrollbar-track{
     display: none;
 }
-.ui.secondary.pointing.menu{
+ui.secondary.pointing.menu{
     overflow-x:auto;
     white-space: nowrap;
 }
@@ -25,4 +25,15 @@
     div.desktop{
         display: none;
     }
+}
+#user {
+
+    background: white;
+
+}
+#user:hover {
+    background: #0E6EB8;
+    transition: all 0.2s ease;
+    color:white;
+    border: 0px solid;
 }
