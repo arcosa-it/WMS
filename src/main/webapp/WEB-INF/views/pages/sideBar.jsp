@@ -25,6 +25,6 @@
     <a href="" class="item"><i class="boxes icon"></i>Surtidos</a>
     <a href="" class="item"><i class="pallet icon"></i>Ubicaciones</a>
     <div class="right menu">
-        <a href="<c:url value="/login"/> " class="item"><i class="lock icon"></i>Salir</a>
+        <a href="<c:url value="/logout"/> " class="item"><i class="lock icon"></i>Salir</a>
     </div>
 </div>

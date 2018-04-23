@@ -23,13 +23,17 @@ var app = {
         var inputFile = document.getElementById("file");
         var file = inputFile.files[0];
         var data = new FormData(document.getElementById("form-escaneo"));
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        var idcliente = document.getElementById("idcliente");
         //data.append('archivo',file);
         $.ajax({
-            url: 'leerExcel',
+            url: 'admin_leerExcel',
             type: 'POST',
             contentType: false,
-            beforeSend: function () {
+            beforeSend: function (xhr) {
                 $("#loader").show();
+                xhr.setRequestHeader(header,token);
             },
             success: function (data) {
                 var success = document.getElementById("result");
@@ -79,4 +83,7 @@ $('#fecha_div').calendar({
             return date.toLocaleString('es-es', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/(\d+)\/(\d+)\/(\d+)/, '$2/$1/$3');
         }
     }
-});
+})
+$("#aceptar").click(function () {
+    app.uploadFile();
+})

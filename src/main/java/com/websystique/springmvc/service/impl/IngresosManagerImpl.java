@@ -6,6 +6,8 @@ import com.websystique.springmvc.service.IngresosManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class IngresosManagerImpl implements IngresosManager {
 
@@ -17,6 +19,11 @@ public class IngresosManagerImpl implements IngresosManager {
     @Override
     public boolean insertIngreso(Ingresos ingresos){
         return ingresosDao.insertIngreso(ingresos);
+    }
+
+    @Override
+    public boolean insertarListaIngresos(List<Ingresos> ingresosList){
+        return ingresosDao.insertarListaIngresos(ingresosList);
     }
 
 }
