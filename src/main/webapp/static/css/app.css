@@ -52,7 +52,7 @@ body{
     z-index: 20;
     position: fixed;
     left: 0px;
-    margin-top:
+    margin-top:0;
 }
 
 #sidemenu #menu {

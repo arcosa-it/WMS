@@ -33,8 +33,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 	  http.authorizeRequests()
 	  	.antMatchers("/", "/home").access("hasRole('ROLE_ADMIN')")
-	  	.antMatchers("/admin/**").access("hasRole('ADMIN')")
-	  	.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
+	  	.antMatchers("/admin_*").access("hasRole('ROLE_ADMIN')")
+	  	.antMatchers("/db/**").access("hasRole('ROLE_ADMIN') and hasRole('DBA')")
 	  	.and().formLogin().loginPage("/login").successHandler(customSuccessHandler)
 	  	.usernameParameter("username").passwordParameter("password")
 	  	.and().csrf()
