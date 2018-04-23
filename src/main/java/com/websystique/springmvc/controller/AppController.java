@@ -1,5 +1,8 @@
 package com.websystique.springmvc.controller;
 
+import com.websystique.springmvc.domain.User;
+import com.websystique.springmvc.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,11 +14,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 
 @Controller
 @RequestMapping("/")
 public class AppController {
+
+	@Autowired
+	UserService userService;
+
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
@@ -27,6 +35,14 @@ public class AppController {
 	public String adminPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
 		return "home";
+	}
+
+	@RequestMapping(value = "/listaUsr", method = RequestMethod.GET)
+	public String listaUsrPage(ModelMap model) {
+		List<User> users = userService.findAllUsers();
+		model.addAttribute("users", users);
+		model.addAttribute("loggedinuser", getPrincipal());
+		return "listaUsr";
 	}
 
 	@RequestMapping(value = "/db", method = RequestMethod.GET)

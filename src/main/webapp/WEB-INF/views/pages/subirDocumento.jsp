@@ -27,7 +27,7 @@
                 </div>
                 <div class="three column row">
                     <div class="column">
-                        
+
                     </div>
                     <div class="column">
                         <label for="file" class="ui icon button">
