@@ -22,10 +22,10 @@ var app = {
 	uploadFile: function () {
         var inputFile = document.getElementById("file");
         var file = inputFile.files[0];
-        var data = new FormData(document.getElementById("form-escaneo"));
+       // var data = new FormData(document.getElementById("form-escaneo"));
+        var data = new FormData(document.forms[0]);
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
-        var idcliente = document.getElementById("idcliente");
         //data.append('archivo',file);
         $.ajax({
             url: 'admin_leerExcel',
@@ -36,11 +36,11 @@ var app = {
                 xhr.setRequestHeader(header,token);
             },
             success: function (data) {
-                var success = document.getElementById("result");
-                success.innerHTML = data;
-                var file_input = $('#file');
-                file_input.reset();
                 $("#loader").hide();
+                /*var success = document.getElementById("result");
+                success.innerHTML = data;*/
+                $("#result").html(data);
+                $('#file').empty();
             },
             data:data,
             processData:false,

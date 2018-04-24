@@ -24,6 +24,7 @@ public class Ingresos implements Serializable{
     private String lote;
     private int cantidad;
     private int id_cliente;
+    private String descripcion;
     private String marca;
     private float peso_bruto;
     private float peso_neto;
@@ -167,5 +168,13 @@ public class Ingresos implements Serializable{
 
     public void setId_documento(int id_documento) {
         this.id_documento = id_documento;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

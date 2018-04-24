@@ -137,7 +137,7 @@ public class DataBaseConfiguration {
         lcemfb.setSharedCacheMode(SharedCacheMode.ENABLE_SELECTIVE);
         Properties jpaProperties = new Properties();
         jpaProperties.put("hibernate.generate_statistics", false);
-        jpaProperties.put("hibernate.show_sql", true);
+        jpaProperties.put("hibernate.show_sql", false);
         lcemfb.setJpaProperties(jpaProperties);
         lcemfb.setPackagesToScan("com.websystique.springmvc.domain");
         lcemfb.afterPropertiesSet();

@@ -18,25 +18,21 @@
     <div class="ui segment">
             <div class="grid">
               <form class="ui form" id="form-escaneo">
-                <div class="eight wide column">
-                    <div class="field">
-                        <select name="idcliente" id="idcliente">
-                            <c:forEach items="${clientes}" var="cliente">
-                                <option value="${cliente.id_cliente}">${cliente.id_cliente} ${cliente.nom_cliente}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                </div>
-
                  <div class="three column row">
                         <div class="column">
-
+                            <div class="field">
+                                <select name="idcliente" id="idcliente">
+                                    <c:forEach items="${clientes}" var="cliente">
+                                        <option value="${cliente.id_cliente}">${cliente.id_cliente} ${cliente.nom_cliente}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
                         </div>
                         <div class="column">
                             <label for="file" class="ui icon button">
                                 <i class="file icon"></i>
                                 Adjuntar Documento</label>
-                            <input type="file" style="display:none" id="file" multiple="" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"/>
+                            <input type="file" style="display:none" id="file" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"/>
                         </div>
                     </div>
 
@@ -49,9 +45,9 @@
               </form>
             </div>
 
-        <button class="ui blue button right floated" id="aceptar">Subir</button>
+        <button class="ui blue button right" id="aceptar">Subir</button>
     </div>
-    <div class="result">
+    <div id="result">
 
     </div>
 </div>
