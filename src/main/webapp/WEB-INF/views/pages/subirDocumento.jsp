@@ -41,13 +41,13 @@
                     <div class="ui active inverted dimmer" id="loader">
                         <div class="ui text loader">Cargando</div>
                     </div>
+                    <button class="ui blue button" id="aceptar">Subir</button>
                 </div>
               </form>
             </div>
-
-        <button class="ui blue button right" id="aceptar">Subir</button>
     </div>
-    <div id="result">
+</div>
 
-    </div>
+<div id="result">
+
 </div>

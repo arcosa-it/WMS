@@ -40,7 +40,8 @@ var app = {
                 /*var success = document.getElementById("result");
                 success.innerHTML = data;*/
                 $("#result").html(data);
-                $('#file').empty();
+                document.getElementById("form-escaneo").reset();
+                $(".titulo-archivo").empty();
             },
             data:data,
             processData:false,
@@ -192,4 +193,5 @@ $('#fecha_div').calendar({
 })
 $("#aceptar").click(function () {
     app.uploadFile();
+    return false;
 })

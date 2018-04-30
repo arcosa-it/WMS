@@ -90,6 +90,9 @@
         <put-attribute name="body" value="/WEB-INF/views/pages/capturaManual.jsp" />
     </definition>
 
-
+    <!-- Vista del mensaje de confirmacion depues de subir un excel -->
+    <definition name="leerExcel" template="/WEB-INF/views/pages/leerExcel.jsp">
+        <put-attribute name="title" value="Leer Excel" />
+    </definition>
 
 </tiles-definitions>
