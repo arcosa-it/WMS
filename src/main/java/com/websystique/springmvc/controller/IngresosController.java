@@ -59,7 +59,7 @@ public class IngresosController {
     }
 
     @RequestMapping(value = "admin_leerExcel",method = RequestMethod.POST)
-    public String leerExcel(Model model, /*HttpServletRequest request,*/ @RequestParam(value = "file") MultipartFile file, @RequestParam(value = "idcliente")int idcliente/*, HttpServletResponse response*/){
+    public  String leerExcel(@RequestBody Model model, /*HttpServletRequest request,*/ @RequestParam(value = "file") MultipartFile file, @RequestParam(value = "idcliente")int idcliente/*, HttpServletResponse response*/){
         logger.info("Metodo para subir el archivo para ingresarlo a la BD");
         /*ServletFileUpload fileUpload = new ServletFileUpload(new DiskFileItemFactory());
         List<FileItem> fileItems = new ArrayList<FileItem>();*/
