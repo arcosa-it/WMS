@@ -117,8 +117,8 @@
                     </div>
                     <div class="column">
                         <div class="field">
-                            <label for="clave_producto">CLAVE DEL PRODUCTO</label>
-                            <input type="text" name="clave_producto" id="clave_producto" placeholder="Clave Producto">
+                            <label for="cuota_cobro">CUOTA DE COBRO</label>
+                            <input type="text" name="cuota_cobro" id="cuota_cobro" placeholder="Cuota De Cobro">
                         </div>
                     </div>
                     <div class="column">
@@ -151,12 +151,12 @@
                         </div>
                     </div>
 
-                    <div class="column" id="fecha_div">
+                    <div class="column" class="fecha_div">
                         <div class="field">
-                            <label for="codigo_barras">FECHA INGRESO</label>
+                            <label for="fecha_ingresos">FECHA INGRESO</label>
                             <div class="ui input left icon">
                                 <i class="calendar alternate outline icon"></i>
-                                <input type="text" name="codigo_barras" id="codigo_barras" placeholder="Fecha Ingreso">
+                                <input type="text" name="codigo_barras" id="fecha_ingresos" placeholder="Fecha Ingreso">
                             </div>
                         </div>
 
@@ -171,7 +171,7 @@
 
                     <div class="column">
                         <div class="field">
-                            <button id="paso_dos" class="ui right floated labeled icon button blue "><i class="right arrow icon"></i>Guardar</button>
+                            <button id="paso_dos" class="ui right floated labeled icon button blue "><i class="right arrow icon"></i>Siguiente</button>
                         </div>
                     </div>
                 </div>
@@ -212,19 +212,19 @@
                     <div class="column">
                         <div class="field">
 
-                            <label for="lote">Lote</label>
+                            <label for="lote">LOTE</label>
                             <input type="text" name="lote" id="lote" placeholder="Lote">
                         </div>
                     </div>
                     <div class="column">
                         <div class="field">
-                            <label for="lote">Cantidad</label>
+                            <label for="lote">CANTIDAD</label>
                             <input type="text" name="cantidad" id="cantidad" placeholder="Cantidad">
                         </div>
                     </div>
                     <div class="column">
                         <div class="field">
-                            <label for="marca">Marca</label>
+                            <label for="marca">MARCA</label>
                             <input type="text" name="marca" id="marca" placeholder="Marca">
                         </div>
                     </div>
@@ -235,14 +235,14 @@
 
                     <div class="column">
                         <div class="field">
-                            <label for="peso">Peso</label>
+                            <label for="peso">PESO</label>
                             <input type="text" name="peso" id="peso" placeholder="Peso">
                         </div>
                     </div>
 
                     <div class="column">
                         <div class="field">
-                            <label for="codigo_barras">Codigo De Barras</label>
+                            <label for="codigo_barras">CODIGO DE BARRAS</label>
                             <input type="text" name="codigo_barras" id="codigo_barras" placeholder="Codigo De Barras">
                         </div>
                     </div>
@@ -256,8 +256,8 @@
 
                     <div class="column">
                         <div class="field">
-                            <label for="estatus">Estatus</label>
-                            <select>
+                            <label for="estatus">ESTATUS</label>
+                            <select id="estatus">
                                 <option value="">Selecciona Opcion</option>
                                 <option>Activado</option>
                                 <option>Detener</option>
@@ -268,31 +268,25 @@
                 </div>
 
 
-                <div class="four column row">
+                <div class="three column row">
 
                     <div class="column">
 
                         <div class="field">
-                            <label for="medidas">Medidas</label>
+                            <label for="medidas">MEDIDAS</label>
                             <input type="text" name="medidas" id="medidas" placeholder="Medidas">
                         </div>
                     </div>
                     <div class="column">
                         <div class="field">
-                            <label for="caducidad">Caducidad</label>
+                            <label for="caducidad">CADUCIDAD</label>
                             <input type="text" name="caducidad" id="caducidad" placeholder="Caducidad">
                         </div>
                     </div>
                     <div class="column">
                         <div class="field">
-                            <label for="fecha_produccion">Fecha Producción</label>
+                            <label for="fecha_produccion">FECHA DE PRODUCCIÓN</label>
                             <input type="text" name="fecha_produccion" id="fecha_produccion" placeholder="Fecha Producción">
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="field">
-                            <label for="clave_producto">Cuota De Cobro</label>
-                            <input type="text" name="clave_producto" id="clave_producto" placeholder="Clave Del Producto">
                         </div>
                     </div>
 
@@ -302,7 +296,17 @@
                 <div class="one column row">
                     <div class="column">
                         <div class="field">
-                            <button id="paso_dos" class="ui right floated labeled icon button blue "><i class="right arrow icon"></i>Finalizar</button>
+                            <label for="descripcion_producto">DESCRIPCIÓN PRODUCTO</label>
+                            <input type="text" name="Descripción Producto" id="descripcion_producto" placeholder="Descripcion Producto">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="one column row">
+                    <div class="column">
+                        <div class="field">
+                            <button id="finalizar" class="ui right floated labeled icon button blue "><i class="right arrow icon"></i>Finalizar</button>
                         </div>
                     </div>
                 </div>

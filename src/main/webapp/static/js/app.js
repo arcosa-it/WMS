@@ -16,17 +16,16 @@ var app = {
         $(".primero").hide();
         $(".segundo").show();
         $("#pallet").removeClass("active");
-        $("#caja").addClass("active")
+        $("#caja").addClass("active");
 		$("#titulo_pallet").text("Código de Pallet: "+codigo);
     },
 	uploadFile: function () {
         var inputFile = document.getElementById("file");
         var file = inputFile.files[0];
-       // var data = new FormData(document.getElementById("form-escaneo"));
         var data = new FormData(document.forms[0]);
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
-        //data.append('archivo',file);
+
         $.ajax({
             url: 'admin_leerExcel',
             type: 'POST',
@@ -37,8 +36,6 @@ var app = {
             },
             success: function (data) {
                 $("#loader").hide();
-                /*var success = document.getElementById("result");
-                success.innerHTML = data;*/
                 $("#result").html(data);
                 document.getElementById("form-escaneo").reset();
                 $(".titulo-archivo").empty();
@@ -73,17 +70,11 @@ var app = {
             type: 'time'
         });
 
-
-
-
-
         $('.ingresar')
             .popup({
                 inline: true
             })
         ;
-
-
 
         $('.modificar')
             .popup({
@@ -91,17 +82,11 @@ var app = {
             })
         ;
 
-
-
         $("#crear").click(function (){
 
             $("#step2").addClass("active");
             $("#step1").removeClass("active");
             $(".step-1").hide();
-
-            //alert("hola mundo");
-
-
 
             $('#contenedor')
                 .transition({
@@ -113,44 +98,25 @@ var app = {
                     }
                 });
             return false;
-
-
         });
-
 
         $("#paso_dos").click(function (){
 
             $("#step3").addClass("active");
             $("#step2").removeClass("active");
-
             $(".step-1").hide();
-
-
-
-
-
-            //alert("hola mundo");
-
 
             $('#formulario')
                 .transition({
                     animation  : 'scale',
                     duration   : '0.5s',
                     onComplete : function() {
-
-
                         $("#formulario").hide();
-
-
                         $("#formulario2").show();
                         $("#tabla_ingresos").show();
-
-
                     }
                 });
             return false;
-
-
         });
     },
 	init:function(){
@@ -180,7 +146,7 @@ $('.menu-tel').click(function(){
     ///.sidebar('setting', 'transition', 'push')
 $("#loader").hide()
 
-$('#fecha_div').calendar({
+$('.fecha_div').calendar({
     monthFirst: false,
     type: 'date',
     today: 'true',

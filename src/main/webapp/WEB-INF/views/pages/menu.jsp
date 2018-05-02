@@ -21,7 +21,7 @@
             <div class="menu">
                 <div class="item">
                     <i class="dropdown icon"></i>
-                    Crear documento
+                    <span class="text">Crear documento</span>
                     <div class="menu">
                         <a href="<c:url value="/subirDocumento"/>" class="item">Subir Documento</a>
                         <a href="<c:url value="/capturaManual"/>" class="item">Captura Manual</a>
