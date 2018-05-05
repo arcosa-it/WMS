@@ -2,6 +2,7 @@ package com.websystique.springmvc.controller;
 
 import com.websystique.springmvc.domain.Ingresos;
 import com.websystique.springmvc.service.ClientesManager;
+import com.websystique.springmvc.service.CuotasManager;
 import com.websystique.springmvc.service.IngresosManager;
 import jxl.Sheet;
 import jxl.Workbook;
@@ -38,6 +39,8 @@ public class IngresosController {
     private ClientesManager clientesManager;
     @Autowired
     private IngresosManager ingresosManager;
+    @Autowired
+    private CuotasManager cuotasManager;
 
     @RequestMapping(value = "/subirDocumento", method = RequestMethod.GET)
     public String subirDocumento(Model model){
@@ -55,7 +58,15 @@ public class IngresosController {
     @RequestMapping(value = "capturaManual")
     public String capturaManual(Model model){
         logger.info("Vista para capturar manualmente un documento");
+        model.addAttribute("clientes",this.clientesManager.getAll());
         return "capturaManual";
+    }
+
+    @RequestMapping(value = "admin_recuperarcuotas", method = RequestMethod.POST)
+    public String recuperarcuotas(Model model, @RequestParam(value = "id_cliente")int id_cliente){
+        logger.info("ajax para recuprar cuotas");
+        model.addAttribute("cuotas", this.cuotasManager.getCuotabyCliente(id_cliente));
+        return "recuperarcoutas";
     }
 
     @RequestMapping(value = "admin_leerExcel",method = RequestMethod.POST)

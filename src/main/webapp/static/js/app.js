@@ -121,7 +121,25 @@ var app = {
     },
 	init:function(){
 		this.menu();
-	}
+	},
+    cuotas: function (id_cliente) {
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        console.log("id_cliente: "+id_cliente);
+        $.ajax({
+            url: "admin_recuperarcuotas",
+            type: "POST",
+            beforeSend: function(xhr){
+                xhr.setRequestHeader(header,token);
+                $("#cuota_cobro").empty()
+            },
+            succes: function (data) {
+                $("#cuota_cobro").append(data);
+            },
+            data: {id_cliente:id_cliente},
+            async: true
+        });
+    }
 };
 
 app.init();
@@ -160,4 +178,8 @@ $('.fecha_div').calendar({
 $("#aceptar").click(function () {
     app.uploadFile();
     return false;
+})
+$("#id_cliente").on("change",function () {
+    var id_cliente= $(this).val();
+    app.cuotas(id_cliente);
 })

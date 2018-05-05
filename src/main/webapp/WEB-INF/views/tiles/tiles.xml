@@ -95,4 +95,9 @@
         <put-attribute name="title" value="Leer Excel" />
     </definition>
 
+    <!-- Vista que recupera las cuotas dependiendo del cliente -->
+    <definition name="recuperarcoutas" template="/WEB-INF/views/pages/recuperarcuotas.jsp">
+        <put-attribute name="title" value="Recuperar Cuotas" />
+    </definition>
+
 </tiles-definitions>

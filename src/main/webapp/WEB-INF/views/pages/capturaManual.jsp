@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: larry
@@ -6,6 +7,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
 <div class="ui segments">
     <div class="ui segment">
         <h2><i class="clipboard list icon"></i> Captura Ingresos</h2>
@@ -82,43 +85,25 @@
         <form class="ui form padded segment" id="formulario">
 
             <div class="ui grid">
-
-
-                <div class="three column row">
-
-                    <div class="column">
-                        <div class="field">
-                            <div class="ui left corner labeled input">
-                                <input type="text" placeholder="ID DOCUMENTO" readonly="">
-                                <div class="ui left corner label">
-                                    <i class="asterisk loading icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-
                 <div class="three column row">
                     <div class="column">
                         <div class="field">
                             <label for="id_cliente">ID CLIENTE </label>
-                            <select>
+                            <select id="id_cliente">
                                 <option value="">Selecciona Opcion</option>
-                                <option>Sigma</option>
-                                <option>Bachoco</option>
-                                <option>Parrillero</option>
-                                <option>La villita</option>
+                                <c:forEach items="${clientes}" var="e">
+                                    <option value="${e.id_cliente}">${e.id_cliente} ${e.nom_cliente}</option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>
                     <div class="column">
                         <div class="field">
                             <label for="cuota_cobro">CUOTA DE COBRO</label>
-                            <input type="text" name="cuota_cobro" id="cuota_cobro" placeholder="Cuota De Cobro">
+                            <!--input type="text" name="cuota_cobro" id="cuota_cobro" placeholder="Cuota De Cobro"-->
+                            <select name="cuota_cobra" id="cuota_cobro">
+                                <option value="">Selecciona una opción</option>
+                            </select>
                         </div>
                     </div>
                     <div class="column">
@@ -179,10 +164,6 @@
 
 
         </form>
-
-
-
-
 
         <form class="ui form padded segment" id="formulario2">
 
