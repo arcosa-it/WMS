@@ -53,23 +53,6 @@ var app = {
         $("#tabla_ingresos").hide();
 
 
-        $('#fecha_div').calendar({
-            monthFirst: false,
-            type: 'date',
-            today: 'true',
-            formatter: {
-                date: function(date, settings) {
-                    if (!date) return '';
-                    return date.toLocaleString('en-us', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/(\d+)\/(\d+)\/(\d+)/, '$2/$1/$3');
-                }
-            }
-        });
-
-
-        $('#hora_ingreso').calendar({
-            type: 'time'
-        });
-
         $('.ingresar')
             .popup({
                 inline: true
@@ -129,12 +112,15 @@ var app = {
         $.ajax({
             url: "admin_recuperarcuotas",
             type: "POST",
-            beforeSend: function(xhr){
+            beforeSend(xhr){
                 xhr.setRequestHeader(header,token);
                 $("#cuota_cobro").empty()
             },
-            succes: function (data) {
+            success(data) {
                 $("#cuota_cobro").append(data);
+            },
+            error(data){
+                alert("Error al traer las cuotas del cliente "+id_cliente);
             },
             data: {id_cliente:id_cliente},
             async: true

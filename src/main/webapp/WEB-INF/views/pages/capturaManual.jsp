@@ -7,8 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<meta name="_csrf" content="${_csrf.token}"/>
-<meta name="_csrf_header" content="${_csrf.headerName}"/>
 <div class="ui segments">
     <div class="ui segment">
         <h2><i class="clipboard list icon"></i> Captura Ingresos</h2>
@@ -59,7 +57,7 @@
             <div class="ui grid">
 
                 <div class="right floated five wide column">
-                    <a href="#" id="crear" class="modificar"><i id="user" class="circular huge file alternate  icon"></i></a>
+                    <a href="#" id="crear" class="modificar"><i id="crear" class="circular huge file alternate  icon"></i></a>
                     <div class="ui special popup">
                         <p>Selecciona esta opcion para crear una Ingreso</p>
                     </div>
@@ -67,7 +65,7 @@
 
                 <div class="right floated five wide column">
 
-                    <a href="#" class="ingresar"><i id="user" class="circular huge pencil alternate  icon"></i></a>
+                    <a href="#" class="ingresar"><i id="modificar" class="circular huge pencil alternate  icon"></i></a>
                     <div class="ui special popup">
                         <p>Selecciona esta opcion para modificar una Ingreso</p>
                     </div>
@@ -100,7 +98,6 @@
                     <div class="column">
                         <div class="field">
                             <label for="cuota_cobro">CUOTA DE COBRO</label>
-                            <!--input type="text" name="cuota_cobro" id="cuota_cobro" placeholder="Cuota De Cobro"-->
                             <select name="cuota_cobra" id="cuota_cobro">
                                 <option value="">Selecciona una opción</option>
                             </select>
@@ -109,7 +106,12 @@
                     <div class="column">
                         <div class="field">
                             <label for="camara">CAMARA</label>
-                            <input type="text" name="camara" id="camara" placeholder="Camara">
+                            <select name="camara" id="camara">
+                                <option value="">Selecciona una opción</option>
+                                <c:forEach items="${camaras}" var="c">
+                                    <option value="${c.clave}">${c.camara}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                     </div>
 
@@ -130,7 +132,7 @@
                             <div class="ui calendar" id="hora_ingreso">
                                 <div class="ui input left icon">
                                     <i class="time icon"></i>
-                                    <input type="text" placeholder="Hora Ingreso">
+                                    <input type="text" placeholder="" value="${time}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -141,7 +143,7 @@
                             <label for="fecha_ingresos">FECHA INGRESO</label>
                             <div class="ui input left icon">
                                 <i class="calendar alternate outline icon"></i>
-                                <input type="text" name="codigo_barras" id="fecha_ingresos" placeholder="Fecha Ingreso">
+                                <input type="text" id="fecha_ingresos" placeholder="Fecha Ingreso" value="${now}" readonly>
                             </div>
                         </div>
 

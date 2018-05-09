@@ -1,6 +1,7 @@
 package com.websystique.springmvc.controller;
 
 import com.websystique.springmvc.domain.Ingresos;
+import com.websystique.springmvc.service.CamaraManager;
 import com.websystique.springmvc.service.ClientesManager;
 import com.websystique.springmvc.service.CuotasManager;
 import com.websystique.springmvc.service.IngresosManager;
@@ -41,6 +42,8 @@ public class IngresosController {
     private IngresosManager ingresosManager;
     @Autowired
     private CuotasManager cuotasManager;
+    @Autowired
+    private CamaraManager camaraManager;
 
     @RequestMapping(value = "/subirDocumento", method = RequestMethod.GET)
     public String subirDocumento(Model model){
@@ -58,7 +61,15 @@ public class IngresosController {
     @RequestMapping(value = "capturaManual")
     public String capturaManual(Model model){
         logger.info("Vista para capturar manualmente un documento");
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat horaformatter = new SimpleDateFormat("hh:mm a");
+        String fecha= simpleDateFormat.format(date);
+        String hora = horaformatter.format(date);
         model.addAttribute("clientes",this.clientesManager.getAll());
+        model.addAttribute("camaras", this.camaraManager.getAllCamara());
+        model.addAttribute("now",fecha);
+        model.addAttribute("time",hora);
         return "capturaManual";
     }
 
