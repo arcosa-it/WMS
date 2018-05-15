@@ -2,6 +2,7 @@ package com.websystique.springmvc.repository.impl;
 
 import com.websystique.springmvc.domain.Ingresos;
 import com.websystique.springmvc.repository.IngresosDao;
+import org.hibernate.QueryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,7 +22,8 @@ public class IngresosDaoImpl implements IngresosDao {
     private static final Logger logger = LoggerFactory
             .getLogger(IngresosDaoImpl.class);
 
-    private EntityManager em = null;
+    @PersistenceContext(unitName = "MySQL")
+    private EntityManager em;
 
     @Autowired
     private EntityManagerFactory entityManagerFactory;
@@ -58,5 +61,18 @@ public class IngresosDaoImpl implements IngresosDao {
             respuesta=false;
         }
         return  respuesta;
+    }
+
+    @Override
+    public int siguienteRenglon(int id_documento){
+        int renglon=0;
+        try{
+            Query query = em.createNativeQuery("SELECT CASE WHEN MAX(no_registro_documento) is null THEN 0 ELSE no_registro_documento END AS renglon from ingresos where id_documento = "+id_documento);
+            renglon = query.getFirstResult();
+        }catch (QueryException e){
+            logger.error("Error al traer el renglon");
+            e.printStackTrace();
+        }
+        return  renglon;
     }
 }

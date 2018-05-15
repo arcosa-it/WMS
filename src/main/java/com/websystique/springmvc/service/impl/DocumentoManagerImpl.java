@@ -13,8 +13,11 @@ public class DocumentoManagerImpl implements DocumentoManager {
     private DocumentoDao documentoDao;
 
     @Override
-    public int insertDocumento(Documento documento){
-        return documentoDao.insertDocumento(documento);
+    public void insertDocumento(Documento documento){
+         documentoDao.insertDocumento(documento);
     }
+
+    @Override
+    public int getDocumento(){ return documentoDao.getDocumento();}
 
 }

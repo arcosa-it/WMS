@@ -178,7 +178,7 @@
                     <div class="column">
                         <div class="field">
                             <div class="ui left corner labeled input">
-                                <input type="text" placeholder="ID DOCUMENTO" readonly="">
+                                <input type="text" placeholder="ID DOCUMENTO" id="id_documento" readonly="">
                                 <div class="ui left corner label">
                                     <i class="asterisk loading icon"></i>
                                 </div>
@@ -214,12 +214,19 @@
 
                 </div>
 
-                <div class="four column row">
+                <div class="five column row">
 
                     <div class="column">
                         <div class="field">
-                            <label for="peso">PESO</label>
-                            <input type="text" name="peso" id="peso" placeholder="Peso">
+                            <label for="peso_bruto">PESO BRUTO</label>
+                            <input type="text" name="peso" id="peso_bruto" placeholder="Peso">
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="field">
+                            <label for="peso_neto">PESO NETO</label>
+                            <input type="text" name="peso" id="peso_neto" placeholder="Peso">
                         </div>
                     </div>
 
@@ -289,6 +296,7 @@
                 <div class="one column row">
                     <div class="column">
                         <div class="field">
+                            <button id="registrar" class="ui right floated ladeled icon button green"><i class="edit outline icon"></i>Registrar</button>
                             <button id="finalizar" class="ui right floated labeled icon button blue "><i class="right arrow icon"></i>Finalizar</button>
                         </div>
                     </div>

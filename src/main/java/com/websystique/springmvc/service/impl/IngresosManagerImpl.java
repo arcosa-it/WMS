@@ -26,4 +26,9 @@ public class IngresosManagerImpl implements IngresosManager {
         return ingresosDao.insertarListaIngresos(ingresosList);
     }
 
+    @Override
+    public int siguienteRenglon(int id_documento){
+        return ingresosDao.siguienteRenglon(id_documento);
+    }
+
 }

@@ -2,6 +2,7 @@ package com.websystique.springmvc.repository.impl;
 
 import com.websystique.springmvc.domain.Documento;
 import com.websystique.springmvc.repository.DocumentoDao;
+import org.hibernate.QueryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,33 +11,40 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Repository(value = "DocumentoDao")
 public class DocumentoDaoImpl implements DocumentoDao {
 
     private static final Logger logger = LoggerFactory.getLogger(DocumentoDaoImpl.class);
 
-    private EntityManager em = null;
+    @PersistenceContext(unitName = "MySQL")
+    private EntityManager em;
 
     @Autowired
     private EntityManagerFactory entityManagerFactory;
 
     @Transactional(readOnly = false)
-    public int insertDocumento(Documento documento){
-        Documento documentofinal = new Documento();
+    public void insertDocumento(Documento documento){
         try{
-            documentofinal = (Documento) em.createQuery("select d from Documento d where d.id_documento=(select max(d.id_documento) from Documento d)").getSingleResult();
-            if(documentofinal!=null){
-                documento.setId_documento(documentofinal.getId_documento() + 1);
-            }else{
-                documento.setId_documento(1);
-            }
             em.persist(documento);
         }catch (Exception e){
             logger.error("Error al generar el documento");
             e.printStackTrace();
         }
-        return documentofinal.getId_documento() + 1;
+    }
+
+    @Override
+    public  int getDocumento(){
+        try{
+            Query query = em.createNamedQuery("Documento.getDocumento");
+            return (int) query.getResultList().get(0);
+        }catch (QueryException e){
+            logger.error("Error al traer el ultimo documento");
+            e.printStackTrace();
+            return 0;
+        }
     }
 
 }

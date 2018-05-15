@@ -11,7 +11,7 @@ import org.hibernate.annotations.NamedQuery;
 @Table(name = "ingresos")
 @NamedQueries({
     @NamedQuery(name = "Ingresos.getRegistro",
-        query = "select i from Ingresos i where i.id_ingreso = :id_ingreso")
+        query = "select i from Ingresos i where i.id_documento = :id_documento")
 })
 public class Ingresos implements Serializable{
 
@@ -49,6 +49,9 @@ public class Ingresos implements Serializable{
     private String campo8;
     private String campo9;
     private String campo10;
+    private String temperatura;
+    private String clave_producto;
+    private int no_registro_documento;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -284,5 +287,29 @@ public class Ingresos implements Serializable{
 
     public void setCampo10(String campo10) {
         this.campo10 = campo10;
+    }
+
+    public String getTemperatura() {
+        return temperatura;
+    }
+
+    public void setTemperatura(String temperatura) {
+        this.temperatura = temperatura;
+    }
+
+    public String getClave_producto() {
+        return clave_producto;
+    }
+
+    public void setClave_producto(String clave_producto) {
+        this.clave_producto = clave_producto;
+    }
+
+    public int getNo_registro_documento() {
+        return no_registro_documento;
+    }
+
+    public void setNo_registro_documento(int no_registro_documento) {
+        this.no_registro_documento = no_registro_documento;
     }
 }

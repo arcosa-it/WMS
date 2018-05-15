@@ -1,10 +1,10 @@
 package com.websystique.springmvc.controller;
 
+import com.websystique.springmvc.domain.Auditoria;
+import com.websystique.springmvc.domain.Documento;
 import com.websystique.springmvc.domain.Ingresos;
-import com.websystique.springmvc.service.CamaraManager;
-import com.websystique.springmvc.service.ClientesManager;
-import com.websystique.springmvc.service.CuotasManager;
-import com.websystique.springmvc.service.IngresosManager;
+import com.websystique.springmvc.domain.Inventario;
+import com.websystique.springmvc.service.*;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
@@ -15,6 +15,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +46,107 @@ public class IngresosController {
     private CuotasManager cuotasManager;
     @Autowired
     private CamaraManager camaraManager;
+    @Autowired
+    private DocumentoManager documentoManager;
+    @Autowired
+    UserService userService;
+    @Autowired
+    AuditoriaManager auditoriaManager;
+    @Autowired
+    private InventariosManager inventariosManager;
+
+    @RequestMapping(value = "admin_ingresarDatos", method = RequestMethod.POST)
+    public String ingresarDatos(Model model,@RequestParam(value = "id_documento")int id_documento,
+                                @RequestParam(value = "lote")String lote,
+                                @RequestParam(value = "cantidad")int cantidad,
+                                @RequestParam(value = "marca")String marca,
+                                @RequestParam(value = "peso_bruto")String peso_bruto,
+                                @RequestParam(value = "peso_neto")String peso_neto,
+                                @RequestParam(value = "sku")String sku,
+                                @RequestParam(value = "estatus")String estatus,
+                                @RequestParam(value = "medidas")String medidas,
+                                @RequestParam(value = "caducidad")String caducidad,
+                                @RequestParam(value = "fecha_produccion")String fecha_produccion,
+                                @RequestParam(value = "descripcion_producto")String descripcion_producto,
+                                @RequestParam(value = "id_cliente")int id_cliente,
+                                @RequestParam(value = "cuota_cobro")String cuota_cobro,
+                                @RequestParam(value = "camara")int camara,
+                                @RequestParam(value = "temperatura")String temperatura,
+                                @RequestParam(value = "hora_ingreso")String hora_ingreso,
+                                @RequestParam(value = "fecha_ingreso")String fecha_ingreso){
+        logger.info("Metodo para registrar los ingresos y devuelve una tabla con los ingresos registrados");
+        Inventario inventario = new Inventario();
+        Ingresos ingresos = new Ingresos();
+        int renglon=this.ingresosManager.siguienteRenglon(id_documento)+1;
+
+        ingresos.setId_documento(id_documento);
+        ingresos.setLote(lote);
+        ingresos.setCantidad(cantidad);
+        ingresos.setMarca(marca);
+        ingresos.setPeso_bruto(Float.parseFloat(peso_bruto));
+        ingresos.setPeso_neto(Float.parseFloat(peso_neto));
+        ingresos.setSku(sku);
+        ingresos.setEstatus(estatus);
+        ingresos.setMedidas(medidas);
+        ingresos.setCaducidad(caducidad);
+        ingresos.setFecha_produccion(fecha_produccion);
+        ingresos.setDescripcion(descripcion_producto);
+        ingresos.setId_cliente(id_cliente);
+        ingresos.setClave_producto(cuota_cobro);
+        ingresos.setCamara(camara);
+        ingresos.setTemperatura(temperatura);
+        ingresos.setHora(hora_ingreso);
+        ingresos.setFecha_ingreso(fecha_ingreso);
+        ingresos.setNo_registro_documento(renglon);
+
+        inventario.setId_documento(id_documento);
+        inventario.setLote(lote);
+        inventario.setCantidad(cantidad);
+        inventario.setMarca(marca);
+        inventario.setPeso_bruto(Float.parseFloat(peso_bruto));
+        inventario.setPeso_neto(Float.parseFloat(peso_neto));
+        inventario.setSku(sku);
+        inventario.setEstatus(estatus);
+        inventario.setMedidas(medidas);
+        inventario.setCaducidad(caducidad);
+        inventario.setFecha_produccion(fecha_produccion);
+        inventario.setDescripcion(descripcion_producto);
+        inventario.setId_cliente(id_cliente);
+        inventario.setClave_producto(cuota_cobro);
+        inventario.setCamara(camara);
+        inventario.setTemperatura(temperatura);
+        inventario.setHora(hora_ingreso);
+        inventario.setFecha_ingreso(fecha_ingreso);
+        inventario.setNo_registro_documento(renglon);
+
+        this.ingresosManager.insertIngreso(ingresos);
+        this.inventariosManager.insertInventario(inventario);
+
+        return "ingresarDatos";
+    }
+
+    @RequestMapping(value = "admin_crearDocumento", method = RequestMethod.POST)
+    public String crearDocumento(Model model,@RequestParam(value = "id_cliente")int id_cliente,
+                                 @RequestParam(value = "hora_ingreso")String hora_ingreso,
+                                 @RequestParam(value = "fecha_ingreso")String fecha_ingreso){
+        logger.info("Ajax para generar un id_documento");
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Documento documento = new Documento();
+        Auditoria auditoria = new Auditoria();
+        documento.setId_cliente(id_cliente);
+        documento.setFecha_ingreso(fecha_ingreso);
+        documento.setHora_ingreso(hora_ingreso);
+        documento.setId_usuario(this.userService.findBySSO(user.getUsername()).getId());
+        this.documentoManager.insertDocumento(documento);
+        int idDocumento = this.documentoManager.getDocumento();
+        auditoria.setFecha_insercion(fecha_ingreso);
+        auditoria.setFecha_modificacion(fecha_ingreso);
+        auditoria.setId_usuario(this.userService.findBySSO(user.getUsername()).getId());
+        auditoria.setDescripcion_movimientos("Se generó el documento numero "+idDocumento+", por el usuario "+user.getUsername());
+        boolean respuesta = this.auditoriaManager.insertauditoria(auditoria);
+        model.addAttribute("documento",idDocumento);
+        return "crearDocumento";
+    }
 
     @RequestMapping(value = "/subirDocumento", method = RequestMethod.GET)
     public String subirDocumento(Model model){

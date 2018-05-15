@@ -89,16 +89,40 @@ var app = {
             $("#step2").removeClass("active");
             $(".step-1").hide();
 
-            $('#formulario')
-                .transition({
-                    animation  : 'scale',
-                    duration   : '0.5s',
-                    onComplete : function() {
-                        $("#formulario").hide();
-                        $("#formulario2").show();
-                        $("#tabla_ingresos").show();
-                    }
-                });
+            var id_cliente= $("#id_cliente").val();
+            var hora_ingreso=$("#hora_ingreso").val();
+            var fecha_ingreso=$("#fecha_ingresos").val();
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+            $.ajax({
+                url: "admin_crearDocumento",
+                type: "POST",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header,token);
+                },
+                success: function (data) {
+                    $("#id_documento").val(data);
+
+                    $('#formulario')
+                        .transition({
+                            animation  : 'scale',
+                            duration   : '0.5s',
+                            onComplete : function() {
+                                $("#formulario").hide();
+                                $("#formulario2").show();
+                                $("#tabla_ingresos").show();
+                            }
+                        });
+                },
+                error: function (data) {
+                    alert("Error al crear un documento");
+                    window.location.href="capturaManual";
+                },
+                data:{id_cliente:id_cliente,hora_ingreso:hora_ingreso,fecha_ingreso:fecha_ingreso},
+                async: true
+            });
+
             return false;
         });
     },

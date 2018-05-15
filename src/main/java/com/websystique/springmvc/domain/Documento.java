@@ -10,7 +10,9 @@ import java.io.Serializable;
 @Table(name = "documento")
 @NamedQueries({
         @NamedQuery(name = "Documento.getAllByDocument",
-                query = "select d from Documento d where d.id_documento= :documento")
+                query = "select d from Documento d where d.id_documento= :documento"),
+        @NamedQuery(name = "Documento.getDocumento",
+                query ="select max(d.id_documento) from Documento d" )
 })
 
 public class Documento implements Serializable {

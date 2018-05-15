@@ -100,4 +100,9 @@
         <put-attribute name="title" value="Recuperar Cuotas" />
     </definition>
 
+    <!-- Vista que genera el numero de documento -->
+    <definition name="crearDocumento" template="/WEB-INF/views/pages/crearDocumento.jsp">
+        <put-attribute name="title" value="Crear Documento" />
+    </definition>
+
 </tiles-definitions>
